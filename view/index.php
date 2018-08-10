@@ -1,9 +1,10 @@
 <?php
-require_once('../model/classeAutenticar.php');
-$objConnection = new Autenticar();
+    require_once('../model/classeAutenticar.php');
+    $objConnection = new Autenticar();
+    $objConnection->verificarLogado();
 
-$objConnection->verificarLogado();
-
+    require_once ('../model/Layout.php');
+    $objLayout = new Layout();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,35 +17,30 @@ $objConnection->verificarLogado();
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Sistema Escolar</title>
+    <title><?php echo $objLayout->tituloPagina; ?></title>
 
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="bootstrap3.3.7/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="bootstrap3.3.7/dist/navbar-fixed-top.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="bootstrap3.3.7/dist/css/sticky-footer.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="bootstrap3.3.7/dist/css/signin.css" rel="stylesheet">
-
-      <!-- DataTables CSS -->
-      <link href="bootstrap3.3.7/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-      <!-- DataTables Responsive CSS -->
-      <link href="bootstrap3.3.7/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="bootstrap3.3.7/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="bootstrap3.3.7/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="bootstrap3.3.7/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="bootstrap3.3.7/assets/js/vendor/ie-emulation-modes-warning.js"></script>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -61,7 +57,11 @@ $objConnection->verificarLogado();
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">
-            Sistema Escolar V1</a>
+              <?php
+                  echo $objLayout->titulo;
+                  echo " V: ";
+                  echo $objLayout->version;
+                  ?></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -148,7 +148,15 @@ $objConnection->verificarLogado();
           <br>
           Data/hora:<?php echo date ("d/m/Y h:m:s")?>
         </p>
-          <p class="credit muted">Copyright (c) 2018 COLÉGIO ANTONIO FRANCISCO LISBOA. <span class="badge" id="sessaoInfo" style="display:none"></span></p>
+          <p class="credit muted">
+              <?php
+              echo $objLayout->copyright;
+              echo $objLayout->nomeEscola;
+              echo " V: ";
+              echo $objLayout->version;
+              ?>
+
+              <span class="badge" id="sessaoInfo" style="display:none"></span></p>
 
       </div>
     </footer>
