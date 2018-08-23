@@ -9,14 +9,17 @@
 class Pessoa
 {
     private $id, $nome, $telefone, $email, $dataCadastro, $dataAtualizacao;
-    public function __set($name, $value)
-    {
-        $this->$name = $value;
-    }
-    public function __get($name)
-    {
-        return $this->$name;
-    }
+   
+    /*public function set($){ $this-> = $; }*/
+    public function setId($id){ $this->id = $id; }
+    public function setNome($nome){ $this->nome = $nome; 
+    
+    /*public function get(){ return $this->$;}*/    
+    public function getId(){ return $this->$id; } 
+    public function getNome(){ return $this->$Nome;}
+    
+
+   
     public function cadastrar(){
         echo "***CADASTRAR CLASSE PESSOA***";
     }
